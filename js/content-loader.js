@@ -138,29 +138,41 @@ function extractLandingContentItems(data) {
     return data;
   }
 
-  if (Array.isArray(data?.content)) {
-    return data.content;
-  }
+  const containers = [data, data?.data, data?.result, data?.payload, data?.landing];
+  const keys = [
+    "content",
+    "contents",
+    "items",
+    "contentList",
+    "allContent",
+    "videos",
+    "movies",
+    "webSeries",
+    "web_series",
+    "tvShows",
+    "tv_shows",
+    "microDrama",
+    "micro_drama",
+    "aiReels",
+    "ai_reels",
+  ];
 
-  if (Array.isArray(data?.items)) {
-    return data.items;
-  }
-
-  if (Array.isArray(data?.data?.content)) {
-    return data.data.content;
-  }
-
-  if (Array.isArray(data?.data?.items)) {
-    return data.data.items;
+  for (const container of containers) {
+    for (const key of keys) {
+      if (Array.isArray(container?.[key])) {
+        return container[key];
+      }
+    }
   }
 
   return [];
 }
 
 function normalizeLandingContentItem(item, fallbackType = "") {
-  const normalizedType = String(
+  const rawType = String(
     item?.type || item?.content_type || item?.contentType || item?.category || fallbackType || ""
   ).trim();
+  const normalizedType = normalizeBackendType(rawType);
 
   return {
     ...item,
@@ -183,6 +195,18 @@ function normalizeLandingContentItem(item, fallbackType = "") {
     year: item?.year || item?.release_year || item?.releaseYear || item?.published_year || "",
     rating: item?.rating || item?.age_rating || item?.ageRating || "",
   };
+}
+
+function normalizeBackendType(type) {
+  const normalized = String(type || "").toLowerCase().replace(/\s+/g, "-");
+
+  if (normalized === "movie") return "movies";
+  if (normalized === "series" || normalized === "webseries" || normalized === "web-series") return "web-series";
+  if (normalized === "tv" || normalized === "tvshow" || normalized === "tv-shows" || normalized === "tv-show") return "tv-shows";
+  if (normalized === "microdrama" || normalized === "micro-drama" || normalized === "micro-dramas") return "micro-drama";
+  if (normalized === "aireels" || normalized === "ai-reels" || normalized === "ai-reel") return "ai-reels";
+
+  return type;
 }
 
 function getStaticCategories() {
@@ -227,29 +251,16 @@ function buildLandingCategories(contentItems) {
   return categories.length ? categories.slice(0, 5) : getFallbackData("/api/categories/banners");
 }
 
-function buildLandingCategories() {
-  return getStaticCategories();
-}
-
 function selectLandingItems(contentItems, keywords, fallbackType, count) {
   const filtered = contentItems.filter((item) => matchesLandingContentType(item, keywords));
-  const sourceItems = filtered.length ? filtered : contentItems;
-  const fallbackItems = getFallbackRail(fallbackType, count);
+  const hasTypedItems = contentItems.some((item) => Boolean(item?.type || item?.content_type || item?.contentType || item?.category));
+  const sourceItems = filtered.length ? filtered : (hasTypedItems ? [] : contentItems);
 
   if (!sourceItems.length) {
-    return fallbackItems;
+    return [];
   }
 
-  const combined = sourceItems.slice(0, count).map((item) => ({ ...item }));
-
-  for (let index = combined.length; index < count; index += 1) {
-    const fallbackItem = fallbackItems[index];
-    if (fallbackItem) {
-      combined.push(fallbackItem);
-    }
-  }
-
-  return combined;
+  return sourceItems.slice(0, count).map((item) => ({ ...item, type: item.type || fallbackType }));
 }
 
 function selectHeroItems(contentItems, count = 3) {
@@ -399,6 +410,16 @@ function renderContentCarousel(data, section, isFallback) {
   const items = Array.isArray(data) ? data : data.items || [];
   const swiperClass = section.dataset.swiperClass || "content-swiper";
   const variant = section.dataset.cardVariant || "";
+
+  if (!items.length) {
+    section.innerHTML = `
+      <div class="empty-rail">
+        <i class="ri-movie-2-line" aria-hidden="true"></i>
+        <p>New Goli Doli titles will appear here soon.</p>
+      </div>
+    `;
+    return;
+  }
 
   section.innerHTML = `
     <div class="swiper ${swiperClass}">
@@ -594,8 +615,10 @@ function renderLandingSection(sectionId, data, keys, renderer, isFallback) {
   const payload = pickLandingPayload(data, keys);
   const derivedPayload = hasPayload(payload) ? [] : deriveLandingSectionPayload(sectionId, data);
   const fallbackPayload = pickLandingPayload(fallbackLanding, keys);
-  const finalPayload = hasPayload(payload) ? payload : (hasPayload(derivedPayload) ? derivedPayload : fallbackPayload);
-  renderer(finalPayload, section, isFallback || (!hasPayload(payload) && !hasPayload(derivedPayload)));
+  const finalPayload = hasPayload(payload)
+    ? payload
+    : (hasPayload(derivedPayload) || !isFallback ? derivedPayload : fallbackPayload);
+  renderer(finalPayload, section, isFallback);
 }
 
 function pickLandingPayload(data, keys) {

@@ -1,4 +1,4 @@
-const API_BASE = "http://192.168.1.33:5000/api";
+const API_BASE = "https://goli-doli-ott-backend.vercel.app/api";
 const API_ORIGIN = API_BASE.replace(/\/api\/?$/, "");
 
 const GOLI_DOLI_CONFIG = {

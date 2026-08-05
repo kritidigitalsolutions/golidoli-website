@@ -676,6 +676,29 @@ textarea {
   animation: shimmer 1.35s infinite;
 }
 
+.empty-rail {
+  min-height: 170px;
+  display: grid;
+  place-items: center;
+  gap: 10px;
+  padding: 28px;
+  text-align: center;
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.empty-rail i {
+  color: var(--color-primary);
+  font-size: 2rem;
+}
+
+.empty-rail p {
+  margin: 0;
+  font-weight: 700;
+}
+
 .category-grid {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
