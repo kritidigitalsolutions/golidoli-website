@@ -1,0 +1,105 @@
+@keyframes gradientDrift {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+
+  100% {
+    transform: translate3d(4%, -3%, 0) rotate(8deg);
+  }
+}
+
+@keyframes floatParticle {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0;
+  }
+
+  12% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate3d(24px, -130px, 0);
+    opacity: 0;
+  }
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.particle:nth-child(1) { --particle-x: 6%; --particle-y: 72%; --particle-size: 8px; --particle-speed: 11s; }
+.particle:nth-child(2) { --particle-x: 13%; --particle-y: 34%; --particle-size: 5px; --particle-speed: 14s; }
+.particle:nth-child(3) { --particle-x: 19%; --particle-y: 84%; --particle-size: 10px; --particle-speed: 12s; }
+.particle:nth-child(4) { --particle-x: 27%; --particle-y: 48%; --particle-size: 7px; --particle-speed: 16s; }
+.particle:nth-child(5) { --particle-x: 35%; --particle-y: 74%; --particle-size: 4px; --particle-speed: 13s; }
+.particle:nth-child(6) { --particle-x: 42%; --particle-y: 28%; --particle-size: 9px; --particle-speed: 15s; }
+.particle:nth-child(7) { --particle-x: 49%; --particle-y: 88%; --particle-size: 6px; --particle-speed: 12s; }
+.particle:nth-child(8) { --particle-x: 57%; --particle-y: 38%; --particle-size: 11px; --particle-speed: 17s; }
+.particle:nth-child(9) { --particle-x: 64%; --particle-y: 69%; --particle-size: 5px; --particle-speed: 13s; }
+.particle:nth-child(10) { --particle-x: 71%; --particle-y: 20%; --particle-size: 8px; --particle-speed: 15s; }
+.particle:nth-child(11) { --particle-x: 78%; --particle-y: 81%; --particle-size: 6px; --particle-speed: 11s; }
+.particle:nth-child(12) { --particle-x: 86%; --particle-y: 44%; --particle-size: 10px; --particle-speed: 18s; }
+.particle:nth-child(13) { --particle-x: 93%; --particle-y: 70%; --particle-size: 5px; --particle-speed: 12s; }
+.particle:nth-child(14) { --particle-x: 9%; --particle-y: 92%; --particle-size: 7px; --particle-speed: 16s; }
+.particle:nth-child(15) { --particle-x: 16%; --particle-y: 54%; --particle-size: 9px; --particle-speed: 13s; }
+.particle:nth-child(16) { --particle-x: 24%; --particle-y: 24%; --particle-size: 5px; --particle-speed: 15s; }
+.particle:nth-child(17) { --particle-x: 31%; --particle-y: 90%; --particle-size: 8px; --particle-speed: 12s; }
+.particle:nth-child(18) { --particle-x: 39%; --particle-y: 62%; --particle-size: 6px; --particle-speed: 18s; }
+.particle:nth-child(19) { --particle-x: 46%; --particle-y: 16%; --particle-size: 10px; --particle-speed: 14s; }
+.particle:nth-child(20) { --particle-x: 53%; --particle-y: 78%; --particle-size: 5px; --particle-speed: 11s; }
+.particle:nth-child(21) { --particle-x: 61%; --particle-y: 50%; --particle-size: 9px; --particle-speed: 17s; }
+.particle:nth-child(22) { --particle-x: 68%; --particle-y: 94%; --particle-size: 7px; --particle-speed: 12s; }
+.particle:nth-child(23) { --particle-x: 75%; --particle-y: 31%; --particle-size: 11px; --particle-speed: 16s; }
+.particle:nth-child(24) { --particle-x: 82%; --particle-y: 64%; --particle-size: 4px; --particle-speed: 13s; }
+.particle:nth-child(25) { --particle-x: 89%; --particle-y: 26%; --particle-size: 8px; --particle-speed: 15s; }
+.particle:nth-child(26) { --particle-x: 96%; --particle-y: 86%; --particle-size: 6px; --particle-speed: 12s; }
+.particle:nth-child(27) { --particle-x: 4%; --particle-y: 43%; --particle-size: 10px; --particle-speed: 18s; }
+.particle:nth-child(28) { --particle-x: 58%; --particle-y: 9%; --particle-size: 5px; --particle-speed: 14s; }
+
+.reveal {
+  opacity: 0;
+  transform: translateY(34px);
+}
+
+.hero-animate {
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+.card-glow {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.card-glow:hover,
+.card-glow:focus-within {
+  border-color: rgba(255, 45, 120, 0.55);
+  box-shadow: 0 20px 52px rgba(255, 45, 120, 0.28), 0 0 0 1px rgba(255, 214, 0, 0.12);
+}
+
+.focus-pop {
+  transition: transform 0.2s ease;
+}
+
+.focus-pop:focus-within {
+  transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal,
+  .hero-animate {
+    opacity: 1;
+    transform: none;
+  }
+}

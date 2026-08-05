@@ -1,0 +1,167 @@
+@media (max-width: 1199.98px) {
+  .navbar-gd .nav-link {
+    padding-inline: 7px;
+    font-size: 0.86rem;
+  }
+
+  .brand-logo {
+    width: 104px;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .section-padding {
+    padding: 72px 0;
+  }
+
+  .hero-section {
+    min-height: 0;
+    padding: 0;
+  }
+
+  .hero-banner-swiper {
+    height: 620px;
+    min-height: 620px;
+  }
+
+  .featured-panel,
+  .featured-panel img,
+  .featured-fallback {
+    min-height: 360px;
+    height: 360px;
+  }
+
+  .skeleton-grid,
+  .pricing-grid,
+  .testimonial-grid,
+  .experience-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .category-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .category-card,
+  .category-card:nth-child(1),
+  .category-card:nth-child(2),
+  .category-card:nth-child(5) {
+    grid-column: span 1;
+  }
+
+  .policy-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .toc {
+    position: static;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .container-max {
+    width: min(100% - 24px, 1180px);
+  }
+
+  .section-padding {
+    padding: 58px 0;
+  }
+
+  .brand-logo {
+    width: 96px;
+  }
+
+  .hero-title {
+    font-size: 3rem;
+  }
+
+  .hero-banner-swiper {
+    height: 560px;
+    min-height: 560px;
+  }
+
+  .hero-banner-content {
+    padding: 58px 0;
+  }
+
+  .hero-cta,
+  .store-buttons {
+    width: 100%;
+  }
+
+  .hero-cta .btn-brand,
+  .hero-cta .btn-outline-blue,
+  .store-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .top10-card {
+    margin-left: 36px;
+  }
+
+  .top10-card .rank-number {
+    left: -38px;
+    font-size: 6rem;
+  }
+
+  .top10-card {
+    aspect-ratio: 2 / 3;
+  }
+
+  .featured-panel,
+  .featured-panel img,
+  .featured-fallback {
+    min-height: 310px;
+    height: 310px;
+  }
+
+  .featured-overlay {
+    padding: 22px;
+  }
+
+  .skeleton-grid,
+  .pricing-grid,
+  .testimonial-grid,
+  .profile-stat-grid,
+  .experience-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .category-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .category-card {
+    min-height: 170px;
+  }
+
+  .tab-shell {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 6px;
+  }
+
+  .gd-tab {
+    flex: 0 0 auto;
+  }
+
+  .phone-mockup {
+    width: min(280px, 86vw);
+  }
+
+  .footer-bottom-inner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .page-hero {
+    padding: 66px 0 38px;
+  }
+
+  .contact-panel,
+  .form-panel,
+  .profile-panel {
+    padding: 20px;
+  }
+}
