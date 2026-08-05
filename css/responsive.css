@@ -10,8 +10,28 @@
 }
 
 @media (max-width: 991.98px) {
+  body {
+    font-size: 0.96rem;
+  }
+
   .section-padding {
     padding: 72px 0;
+  }
+
+  .section-kicker {
+    font-size: 1.08rem;
+  }
+
+  .section-title {
+    font-size: clamp(2.15rem, 7vw, 3.4rem);
+    margin-bottom: 22px;
+  }
+
+  .section-copy,
+  .page-lead,
+  .accordion-gd .accordion-body {
+    font-size: 0.96rem;
+    line-height: 1.7;
   }
 
   .hero-section {
@@ -22,6 +42,59 @@
   .hero-banner-swiper {
     height: min(70vh, 620px);
     min-height: 500px;
+  }
+
+  .hero-title {
+    font-size: clamp(3.1rem, 10vw, 5rem);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .hero-subtitle {
+    font-size: 1.08rem;
+    line-height: 1.55;
+    margin-bottom: 24px;
+  }
+
+  .btn-brand,
+  .btn-outline-blue,
+  .store-button {
+    font-size: 0.95rem;
+  }
+
+  .card-title {
+    font-size: 1.08rem;
+  }
+
+  .badge-type,
+  .content-eyebrow {
+    font-size: 0.9rem;
+  }
+
+  .category-card h3 {
+    font-size: 1.45rem;
+    line-height: 1.12;
+  }
+
+  .experience-card h3,
+  .plan-name {
+    font-size: 1.2rem;
+  }
+
+  .testimonial-card,
+  .experience-card,
+  .contact-panel,
+  .form-panel,
+  .profile-panel {
+    font-size: 0.96rem;
+  }
+
+  .page-title {
+    font-size: clamp(2.4rem, 8vw, 4rem);
+  }
+
+  .footer-title {
+    font-size: 1rem;
   }
 
   .featured-panel,
@@ -59,6 +132,10 @@
 }
 
 @media (max-width: 575.98px) {
+  body {
+    font-size: 0.92rem;
+  }
+
   .container-max {
     width: min(100% - 24px, 1180px);
   }
@@ -71,8 +148,27 @@
     width: 96px;
   }
 
+  .section-kicker {
+    font-size: 0.98rem;
+    margin-bottom: 8px;
+  }
+
+  .section-title {
+    font-size: clamp(1.9rem, 12vw, 2.75rem);
+    line-height: 1.05;
+    margin-bottom: 18px;
+  }
+
   .hero-title {
-    font-size: 3rem;
+    font-size: clamp(2.55rem, 13vw, 3.2rem);
+    line-height: 0.98;
+    margin-bottom: 14px;
+  }
+
+  .hero-subtitle {
+    font-size: 0.98rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
   }
 
   .hero-banner-swiper {
@@ -82,6 +178,18 @@
 
   .hero-banner-content {
     padding: 58px 0;
+  }
+
+  .hero-banner-content .section-kicker {
+    font-size: 0.92rem;
+  }
+
+  .btn-brand,
+  .btn-outline-blue,
+  .store-button {
+    min-height: 44px;
+    padding: 10px 16px;
+    font-size: 0.9rem;
   }
 
   .hero-cta,
@@ -102,7 +210,7 @@
 
   .top10-card .rank-number {
     left: -38px;
-    font-size: 6rem;
+    font-size: 5.4rem;
   }
 
   .top10-card {
@@ -134,6 +242,80 @@
 
   .category-card {
     min-height: 170px;
+    padding: 18px;
+  }
+
+  .category-card h3 {
+    font-size: 1.55rem;
+    line-height: 1.08;
+  }
+
+  .category-icon {
+    width: 44px;
+    height: 44px;
+    font-size: 1.35rem;
+    margin-bottom: 10px;
+  }
+
+  .card-title {
+    font-size: 1rem;
+  }
+
+  .meta-row {
+    gap: 8px;
+    font-size: 0.78rem;
+  }
+
+  .badge-type,
+  .content-eyebrow {
+    padding: 5px 8px;
+    font-size: 0.82rem;
+  }
+
+  .experience-card h3,
+  .testimonial-author strong,
+  .contact-item strong {
+    font-size: 1.05rem;
+  }
+
+  .experience-card p,
+  .testimonial-card p,
+  .section-copy,
+  .page-lead,
+  .accordion-gd .accordion-body,
+  .footer-links,
+  .contact-item {
+    font-size: 0.9rem;
+    line-height: 1.65;
+  }
+
+  .accordion-gd .accordion-button {
+    font-size: 0.92rem;
+    line-height: 1.35;
+    padding: 14px;
+  }
+
+  .form-label {
+    font-size: 0.9rem;
+  }
+
+  .form-control,
+  .form-select {
+    min-height: 44px;
+    font-size: 0.92rem;
+  }
+
+  textarea.form-control {
+    min-height: 132px;
+  }
+
+  .page-title {
+    font-size: clamp(2.15rem, 13vw, 3rem);
+    line-height: 1.02;
+  }
+
+  .footer-title {
+    font-size: 0.98rem;
   }
 
   .tab-shell {
