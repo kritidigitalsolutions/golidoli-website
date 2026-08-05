@@ -20,8 +20,8 @@
   }
 
   .hero-banner-swiper {
-    height: 620px;
-    min-height: 620px;
+    height: min(70vh, 620px);
+    min-height: 500px;
   }
 
   .featured-panel,
@@ -76,8 +76,8 @@
   }
 
   .hero-banner-swiper {
-    height: 560px;
-    min-height: 560px;
+    height: 520px;
+    min-height: 520px;
   }
 
   .hero-banner-content {

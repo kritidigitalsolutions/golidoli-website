@@ -279,7 +279,16 @@ textarea {
 }
 
 .hero-slider-section {
+  min-height: 0;
   padding: 0;
+  background: transparent;
+  display: block;
+  isolation: auto;
+}
+
+.hero-slider-section::before,
+.hero-slider-section .particle-field {
+  display: none;
 }
 
 .hero-section::before {
@@ -347,7 +356,9 @@ textarea {
   min-width: 0;
   height: min(78vh, 720px);
   min-height: 520px;
-  padding: 0;
+  padding: 0 !important;
+  display: block;
+  background: #070E22;
 }
 
 #hero-banner-slider {
@@ -362,7 +373,7 @@ textarea {
   display: flex;
   align-items: center;
   overflow: hidden;
-  background: #101936;
+  background: #070E22;
 }
 
 .hero-banner-slide img,
@@ -417,7 +428,13 @@ textarea {
 }
 
 .hero-banner-swiper .swiper-pagination {
-  bottom: 28px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 24px;
+  z-index: 5;
+  height: auto;
+  line-height: 1;
 }
 
 .featured-panel {
