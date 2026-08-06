@@ -3,301 +3,1025 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Goli Doli is an Indian entertainment OTT platform for web series, movies, TV shows, micro dramas, and AI reels.">
-  <title>Goli Doli | Entertainment OTT Platform from India</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&family=Nunito:wght@700;800;900;1000&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
-  <link href="https://unicons.iconscout.com/release/v4.0.8/css/line.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet">
-  <link href="css/style.css" rel="stylesheet">
-  <link href="css/animations.css" rel="stylesheet">
-  <link href="css/responsive.css" rel="stylesheet">
+  <meta name="description" content="Goli Doli is an entertainment OTT platform for web series, movies, TV shows, micro drama, and AI reels.">
+  <title>Goli Doli | Entertainment OTT Platform</title>
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,800,900&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0A0010;
+      --bg2: #110020;
+      --pink: #FF2D78;
+      --yellow: #FFD600;
+      --blue: #1565FF;
+      --text: #FFFFFF;
+      --text-muted: rgba(255,255,255,0.6);
+      --border: rgba(255,255,255,0.08);
+      --gradient-bg: linear-gradient(180deg, #1A002E 0%, #0A0010 40%);
+      --gradient-brand: linear-gradient(135deg, #FF2D78, #FFD600);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      background: var(--bg);
+      font-family: "Satoshi", sans-serif;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .container {
+      width: min(1100px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(10,0,16,0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .navbar.scrolled {
+      background: rgba(10,0,16,0.98);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.28);
+    }
+
+    .nav-inner {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand img {
+      height: 44px;
+      width: auto;
+    }
+
+    .brand-fallback {
+      display: none;
+      font-family: "Satoshi", sans-serif;
+      font-weight: 900;
+      font-size: 24px;
+      background: var(--gradient-brand);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .brand.logo-error img {
+      display: none;
+    }
+
+    .brand.logo-error .brand-fallback {
+      display: inline-block;
+    }
+
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 8px 22px;
+      border-radius: 50px;
+      color: #FFFFFF;
+      background: var(--pink);
+      font-weight: 700;
+      font-size: 14px;
+      box-shadow: 0 10px 26px rgba(255,45,120,0.32);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .contact-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 34px rgba(255,45,120,0.45);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 120px 20px 60px;
+      background:
+        radial-gradient(ellipse at 30% 50%, rgba(255,45,120,0.15) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(255,214,0,0.08) 0%, transparent 50%),
+        linear-gradient(180deg, #1A002E 0%, #0A0010 100%);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      left: -5%;
+      right: -5%;
+      bottom: -24px;
+      height: 68px;
+      background: radial-gradient(ellipse at center, rgba(255,45,120,0.85) 0%, rgba(255,45,120,0.28) 42%, transparent 72%);
+      filter: blur(4px);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 2;
+      max-width: 1150px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 36px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+      padding: 5px 14px;
+      border: 1px solid rgba(255,45,120,0.75);
+      border-radius: 50px;
+      color: var(--pink);
+      background: rgba(255,45,120,0.08);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .hero h1 {
+      max-width: 540px;
+      margin: 0 0 24px;
+      color: #FFFFFF;
+      font-family: "Satoshi", sans-serif;
+      font-size: clamp(42px, 5.2vw, 60px);
+      line-height: 1.1;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+    }
+
+    .hero-copy {
+      max-width: 480px;
+      margin: 0 0 28px;
+      color: var(--text-muted);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .store-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .store-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 150px;
+      padding: 10px 16px;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 10px;
+      color: #FFFFFF;
+      background: #000000;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .store-btn:hover {
+      border-color: #FFFFFF;
+      transform: translateY(-2px);
+    }
+
+    .store-btn i {
+      font-size: 26px;
+    }
+
+    .store-small {
+      display: block;
+      color: rgba(255,255,255,0.7);
+      font-size: 10px;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .store-main {
+      display: block;
+      color: #FFFFFF;
+      font-size: 16px;
+      line-height: 1.1;
+      font-weight: 800;
+    }
+
+    .sparkle {
+      position: absolute;
+      color: var(--pink);
+      opacity: 0.72;
+      font-size: var(--size);
+      animation: pulseStar 2s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+
+    .sparkle.one { --size: 48px; top: 18%; left: 55%; }
+    .sparkle.two { --size: 34px; top: 24%; right: 8%; animation-delay: 0.4s; }
+    .sparkle.three { --size: 20px; top: 38%; left: 12%; animation-delay: 0.9s; }
+    .sparkle.four { --size: 22px; bottom: 20%; right: 30%; animation-delay: 1.2s; }
+    .sparkle.five { --size: 16px; top: 14%; left: 34%; animation-delay: 0.2s; }
+
+    .mockup-stage {
+      position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: floatPhone 4s ease-in-out infinite alternate;
+    }
+
+    .hero-art {
+      width: 100%;
+      max-width: 540px;
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 30px 60px rgba(255,45,120,0.28));
+    }
+
+    .phone {
+      position: absolute;
+      width: 160px;
+      height: 330px;
+      padding: 12px;
+      border: 2px solid rgba(255,255,255,0.15);
+      border-radius: 28px;
+      background: linear-gradient(180deg, #160026, #050010);
+      box-shadow: 0 0 60px rgba(255,45,120,0.3);
+      overflow: hidden;
+    }
+
+    .phone::before {
+      content: "";
+      display: block;
+      width: 58px;
+      height: 6px;
+      margin: 0 auto 12px;
+      border-radius: 99px;
+      background: rgba(255,255,255,0.16);
+    }
+
+    .phone.center {
+      position: relative;
+      width: 205px;
+      height: 400px;
+      z-index: 3;
+      border-color: rgba(255,45,120,0.42);
+    }
+
+    .phone.left {
+      left: 12px;
+      bottom: 56px;
+      z-index: 2;
+      transform: rotate(-9deg);
+    }
+
+    .phone.right {
+      right: 0;
+      bottom: 54px;
+      z-index: 2;
+      transform: rotate(8deg);
+    }
+
+    .phone-mini-card,
+    .phone-poster,
+    .phone-row,
+    .phone-chip {
+      border-radius: 10px;
+      background: rgba(255,255,255,0.08);
+    }
+
+    .phone-poster {
+      height: 128px;
+      margin-bottom: 10px;
+      display: grid;
+      place-items: end start;
+      padding: 12px;
+      color: #FFFFFF;
+      font-family: "Satoshi", sans-serif;
+      font-weight: 900;
+      line-height: 1.05;
+      background: linear-gradient(135deg, rgba(255,45,120,0.95), rgba(21,101,255,0.68));
+    }
+
+    .phone-poster.yellow {
+      background: linear-gradient(135deg, rgba(255,214,0,0.95), rgba(255,45,120,0.65));
+      color: #160026;
+    }
+
+    .phone-mini-card {
+      height: 60px;
+      margin-bottom: 8px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,45,120,0.16));
+    }
+
+    .phone-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 7px;
+      margin-top: 10px;
+    }
+
+    .phone-chip {
+      height: 48px;
+      background: linear-gradient(135deg, rgba(255,45,120,0.52), rgba(255,214,0,0.3));
+    }
+
+    .phone-row {
+      height: 10px;
+      margin: 9px 0;
+    }
+
+    .features {
+      padding: 70px 20px;
+      background: #0E001A;
+    }
+
+    .section-head {
+      max-width: 780px;
+      margin: 0 auto 40px;
+      text-align: center;
+    }
+
+    .section-head h2,
+    .feature-scroll h2,
+    .showcase h2 {
+      margin: 0 0 12px;
+      color: #FFFFFF;
+      font-family: "Satoshi", sans-serif;
+      font-weight: 900;
+      font-size: 32px;
+      line-height: 1.2;
+    }
+
+    .section-head p,
+    .showcase p {
+      max-width: 680px;
+      margin: 0 auto;
+      color: var(--text-muted);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .feature-card {
+      padding: 28px 20px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      text-align: center;
+      background: rgba(255,255,255,0.04);
+      transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255,45,120,0.3);
+      background: rgba(255,45,120,0.06);
+    }
+
+    .feature-card i {
+      display: block;
+      margin-bottom: 14px;
+      color: var(--pink);
+      font-size: 32px;
+    }
+
+    .feature-card h3 {
+      margin: 0 0 8px;
+      color: #FFFFFF;
+      font-family: "Satoshi", sans-serif;
+      font-size: 16px;
+      font-weight: 800;
+    }
+
+    .feature-card p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .marquee {
+      overflow: hidden;
+      padding: 28px 0;
+      border-top: 1px solid rgba(255,45,120,0.2);
+      border-bottom: 1px solid rgba(255,45,120,0.2);
+      background: #0A0010;
+    }
+
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      white-space: nowrap;
+      animation: marqueeScroll 25s linear infinite;
+    }
+
+    .marquee-line {
+      padding-right: 30px;
+      color: #FFFFFF;
+      font-family: "Satoshi", sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .marquee-line span {
+      color: var(--pink);
+    }
+
+    .feature-scroll {
+      overflow: hidden;
+      padding: 60px 0 60px 20px;
+      background: #0A0010;
+    }
+
+    .feature-scroll h2 {
+      width: min(1000px, calc(100% - 40px));
+      margin: 0 auto 40px;
+      text-align: center;
+      font-size: 34px;
+    }
+
+    .scroll-row {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding-right: 20px;
+    }
+
+    .scroll-row.infinite {
+      width: max-content;
+      overflow: visible;
+      scroll-snap-type: none;
+      animation: benefitLoop 34s linear infinite;
+      will-change: transform;
+    }
+
+    .feature-scroll:hover .scroll-row.infinite {
+      animation-play-state: paused;
+    }
+
+    .scroll-row::-webkit-scrollbar {
+      display: none;
+    }
+
+    .benefit-card {
+      position: relative;
+      flex: 0 0 260px;
+      height: 380px;
+      overflow: hidden;
+      padding: 24px;
+      border-radius: 20px;
+      scroll-snap-align: start;
+      border: 1px solid rgba(255,45,120,0.3);
+      background: linear-gradient(135deg, #1A003A, #0D0020);
+    }
+
+    .benefit-card:nth-child(2) {
+      border-color: rgba(21,101,255,0.3);
+      background: linear-gradient(135deg, #001A3A, #000D20);
+    }
+
+    .benefit-card:nth-child(3) {
+      border-color: rgba(255,45,120,0.4);
+      background: linear-gradient(135deg, #2A0015, #1A000D);
+    }
+
+    .benefit-card:nth-child(4) {
+      border-color: rgba(255,214,0,0.3);
+      background: linear-gradient(135deg, #1A1A00, #0D0D00);
+    }
+
+    .benefit-card:nth-child(5) {
+      border-color: rgba(160,50,255,0.3);
+      background: linear-gradient(135deg, #1A0020, #0D0015);
+    }
+
+    .benefit-card h3 {
+      margin: 0 0 14px;
+      color: #FFFFFF;
+      font-family: "Satoshi", sans-serif;
+      font-size: 18px;
+      font-weight: 900;
+      line-height: 1.25;
+    }
+
+    .benefit-phone {
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 22px;
+      height: 255px;
+      overflow: hidden;
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .benefit-phone.with-image {
+      inset: 70px 10px 8px;
+      height: auto;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      overflow: visible;
+    }
+
+    .benefit-phone.with-image::before {
+      display: none;
+    }
+
+    .benefit-phone.with-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center bottom;
+      filter: drop-shadow(0 22px 34px rgba(0,0,0,0.45));
+      transition: transform 0.3s ease;
+    }
+
+    .benefit-card:hover .benefit-phone.with-image img {
+      transform: translateY(-6px) scale(1.03);
+    }
+
+    .showcase {
+      padding: 80px 20px;
+      text-align: center;
+      background: linear-gradient(180deg, #0A0010 0%, #150025 50%, #0A0010 100%);
+    }
+
+    .showcase h2 {
+      font-size: 38px;
+    }
+
+    .showcase p {
+      margin-bottom: 50px;
+      font-size: 16px;
+    }
+
+    .showcase-img {
+      width: 100%;
+      max-width: 1020px;
+      height: auto;
+      margin: 0 auto;
+      display: block;
+      filter: drop-shadow(0 20px 60px rgba(255,45,120,0.3));
+      transition: transform 0.4s ease;
+    }
+
+    .showcase-img:hover {
+      transform: scale(1.015);
+    }
+
+    .footer {
+      background: #050010;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-top {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 50px 20px 30px;
+      display: grid;
+      grid-template-columns: 35% 30% 35%;
+      gap: 24px;
+    }
+
+    .footer-logo {
+      height: 44px;
+      width: auto;
+    }
+
+    .company,
+    .address,
+    .footer-contact,
+    .footer-link {
+      color: var(--text-muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .company {
+      margin-top: 12px;
+    }
+
+    .address {
+      margin-top: 8px;
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 8px;
+      align-content: start;
+    }
+
+    .footer-link {
+      font-size: 15px;
+      line-height: 2.1;
+      transition: color 0.2s ease;
+    }
+
+    .footer-link:hover {
+      color: #FFFFFF;
+    }
+
+    .reach-title {
+      margin: 0 0 12px;
+      color: #FFFFFF;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .footer-contact {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    .footer-store {
+      margin-top: 20px;
+    }
+
+    .footer-bottom {
+      padding: 20px;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      text-align: center;
+      font-size: 13px;
+    }
+
+    @keyframes floatPhone {
+      from { transform: translateY(0); }
+      to { transform: translateY(-12px); }
+    }
+
+    @keyframes pulseStar {
+      from { transform: scale(1); opacity: 0.45; }
+      to { transform: scale(1.3); opacity: 0.9; }
+    }
+
+    @keyframes marqueeScroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    @keyframes benefitLoop {
+      from { transform: translateX(0); }
+      to { transform: translateX(calc(-50% - 8px)); }
+    }
+
+    @media (max-width: 768px) {
+      .nav-inner {
+        height: 64px;
+      }
+
+      .brand img,
+      .footer-logo {
+        height: 38px;
+      }
+
+      .contact-btn {
+        min-height: 34px;
+        padding: 7px 16px;
+        font-size: 13px;
+      }
+
+      .hero {
+        padding: 100px 20px 50px;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero h1 {
+        margin-inline: auto;
+        font-size: 36px;
+      }
+
+      .hero-copy {
+        margin-inline: auto;
+        font-size: 14px;
+      }
+
+      .store-row {
+        justify-content: center;
+      }
+
+      .mockup-stage {
+        min-height: auto;
+      }
+
+      .hero-art {
+        width: 100%;
+        max-width: 480px;
+      }
+
+      .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .section-head h2,
+      .feature-scroll h2,
+      .showcase h2 {
+        font-size: 28px;
+      }
+
+      .marquee-line {
+        font-size: 16px;
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-links {
+        gap: 2px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        width: min(100% - 28px, 1100px);
+      }
+
+      .hero h1 {
+        font-size: 30px;
+      }
+
+      .hero-copy {
+        font-size: 13px;
+      }
+
+      .store-btn {
+        min-width: 132px;
+        padding: 9px 12px;
+      }
+
+      .store-main {
+        font-size: 14px;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .benefit-card {
+        flex-basis: 220px;
+        height: 350px;
+      }
+
+      .scroll-row.infinite {
+        animation-duration: 28s;
+      }
+
+      .benefit-phone {
+        height: 230px;
+      }
+
+      .benefit-phone.with-image {
+        inset: 68px 8px 8px;
+        height: auto;
+      }
+
+      .mockup-stage {
+        min-height: auto;
+      }
+
+      .hero-art {
+        width: 100%;
+        max-width: 340px;
+      }
+    }
+  </style>
 </head>
-<body class="site-shell">
-  <header class="navbar-gd">
-    <nav class="navbar navbar-expand-xl" aria-label="Main navigation">
-      <div class="container-max d-flex align-items-center justify-content-between">
-        <a class="navbar-brand" href="index.html" aria-label="Goli Doli home">
-          <img class="brand-logo" src="assets/logo.png" alt="Goli Doli" loading="lazy">
-        </a>
-        <div class="collapse navbar-collapse justify-content-center">
-          <ul class="navbar-nav align-items-center">
-            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="#categories">Browse</a></li>
-            <li class="nav-item"><a class="nav-link" href="#latest-webseries">Web Series</a></li>
-            <li class="nav-item"><a class="nav-link" href="#top-movies">Movies</a></li>
-            <li class="nav-item"><a class="nav-link" href="#trending-tv">TV Shows</a></li>
-            <li class="nav-item"><a class="nav-link" href="#latest-micro-drama">Micro Drama</a></li>
-            <li class="nav-item"><a class="nav-link" href="#ai-reels">AI Reels</a></li>
-          </ul>
-        </div>
-        <div class="nav-actions">
-          <a class="store-pill d-none d-md-inline-flex" href="#download" aria-label="Download from App Store"><i class="ri-apple-fill" aria-hidden="true"></i><span>App Store</span></a>
-          <a class="store-pill d-none d-md-inline-flex" href="#download" aria-label="Download from Play Store"><i class="ri-google-play-fill" aria-hidden="true"></i><span>Play Store</span></a>
-          <button class="mobile-toggle d-xl-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-label="Open menu">
-            <i class="ri-menu-3-line" aria-hidden="true"></i>
-          </button>
-        </div>
-      </div>
-    </nav>
+<body>
+  <header class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a class="brand" href="#home" aria-label="Goli Doli home">
+        <img src="assets/logo.png" alt="Goli Doli">
+        <span class="brand-fallback">Goli Doli</span>
+      </a>
+      <a class="contact-btn" href="contact.html">Contact Us</a>
+    </div>
   </header>
 
-  <div class="offcanvas offcanvas-end offcanvas-gd" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
-    <div class="offcanvas-header">
-      <img class="brand-logo" src="assets/logo.png" alt="Goli Doli" loading="lazy">
-      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close menu"></button>
-    </div>
-    <div class="offcanvas-body d-flex flex-column">
-      <h2 class="visually-hidden" id="mobileMenuLabel">Mobile menu</h2>
-      <a class="offcanvas-link" href="index.html"><i class="ri-home-5-line" aria-hidden="true"></i>Home</a>
-      <a class="offcanvas-link" href="#categories"><i class="ri-compass-3-line" aria-hidden="true"></i>Browse</a>
-      <a class="offcanvas-link" href="#latest-webseries"><i class="ri-movie-2-line" aria-hidden="true"></i>Web Series</a>
-      <a class="offcanvas-link" href="#top-movies"><i class="ri-film-line" aria-hidden="true"></i>Movies</a>
-      <a class="offcanvas-link" href="#trending-tv"><i class="ri-tv-2-line" aria-hidden="true"></i>TV Shows</a>
-      <a class="offcanvas-link" href="#latest-micro-drama"><i class="ri-drama-line" aria-hidden="true"></i>Micro Drama</a>
-      <a class="offcanvas-link" href="#ai-reels"><i class="uil uil-robot" aria-hidden="true"></i>AI Reels</a>
-      <div class="mt-auto">
-        <div class="social-row" aria-label="Social links">
-          <a class="icon-button" href="#" aria-label="Instagram"><i class="ri-instagram-line" aria-hidden="true"></i></a>
-          <a class="icon-button" href="#" aria-label="X"><i class="ri-twitter-x-line" aria-hidden="true"></i></a>
-          <a class="icon-button" href="#" aria-label="Facebook"><i class="ri-facebook-fill" aria-hidden="true"></i></a>
-          <a class="icon-button" href="#" aria-label="YouTube"><i class="ri-youtube-fill" aria-hidden="true"></i></a>
+  <main id="home">
+    <section class="hero" aria-labelledby="hero-title">
+      <span class="sparkle one">✦</span>
+      <span class="sparkle two">✦</span>
+      <span class="sparkle three">+</span>
+      <span class="sparkle four">✦</span>
+      <span class="sparkle five">+</span>
+      <div class="hero-grid">
+        <div>
+          <span class="eyebrow"><i class="ri-movie-2-line" aria-hidden="true"></i> New Dramas Everyday</span>
+          <h1 id="hero-title">Entertainment OTT Platform</h1>
+          <p class="hero-copy">Desi Entertainment, Ab Aapki Marzi Se. Watch web series, movies, TV shows, micro dramas and AI reels anytime.</p>
+          <div class="store-row" aria-label="Download app">
+            <a class="store-btn" href="#" aria-label="Get it on Google Play">
+              <i class="ri-google-play-fill" aria-hidden="true"></i>
+              <span><span class="store-small">Get it on</span><span class="store-main">Google Play</span></span>
+            </a>
+            <a class="store-btn" href="#" aria-label="Download on the App Store">
+              <i class="ri-apple-fill" aria-hidden="true"></i>
+              <span><span class="store-small">Download on the</span><span class="store-main">App Store</span></span>
+            </a>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-
-  <main>
-    <section class="hero-section hero-slider-section" id="home" aria-labelledby="hero-title">
-      <div class="particle-field" aria-hidden="true"></div>
-      <h1 class="visually-hidden" id="hero-title">Goli Doli Entertainment OTT Platform</h1>
-      <div id="hero-banner-slider" class="hero-animate" data-skeleton="hero" aria-live="polite"></div>
-    </section>
-
-    <section class="section-padding reveal" id="categories" aria-labelledby="categories-title">
-      <div class="container-max">
-        <span class="section-kicker">Browse By Mood</span>
-        <h2 class="section-title" id="categories-title">Categories</h2>
-        <div id="categories-grid" data-skeleton-count="5" aria-live="polite"></div>
-      </div>
-    </section>
-
-    <section class="section-padding reveal" id="top-movies" aria-labelledby="top-movies-title">
-      <div class="container-max">
-        <span class="section-kicker">Most Watched</span>
-        <h2 class="section-title" id="top-movies-title">Top 10 Movies</h2>
-        <div id="top-movies-carousel" data-skeleton-count="4" data-swiper-class="top10-swiper" data-card-variant="top10" aria-live="polite"></div>
-      </div>
-    </section>
-
-    <section class="section-padding reveal" id="latest-webseries" aria-labelledby="latest-webseries-title">
-      <div class="container-max">
-        <span class="section-kicker">Fresh Episodes</span>
-        <h2 class="section-title" id="latest-webseries-title">Latest Web Series</h2>
-        <div id="latest-webseries-carousel" data-skeleton-count="4" data-swiper-class="webseries-swiper" aria-live="polite"></div>
-      </div>
-    </section>
-
-    <section class="section-padding reveal" id="trending-tv" aria-labelledby="trending-tv-title">
-      <div class="container-max">
-        <span class="section-kicker">Audience Picks</span>
-        <h2 class="section-title" id="trending-tv-title">Trending TV Shows</h2>
-        <div id="trending-tv-carousel" data-skeleton-count="4" data-swiper-class="tv-swiper" aria-live="polite"></div>
-      </div>
-    </section>
-
-    <section class="section-padding reveal" id="latest-micro-drama" aria-labelledby="latest-micro-drama-title">
-      <div class="container-max">
-        <span class="section-kicker">Short Stories</span>
-        <h2 class="section-title" id="latest-micro-drama-title">Latest Micro Drama</h2>
-        <div id="latest-micro-drama-carousel" data-skeleton-count="4" data-swiper-class="micro-swiper" aria-live="polite"></div>
-      </div>
-    </section>
-
-    <section class="section-padding reveal" id="ai-reels" aria-labelledby="ai-reels-title">
-      <div class="container-max">
-        <span class="section-kicker">Future Shorts</span>
-        <h2 class="section-title" id="ai-reels-title">AI Reels</h2>
-        <div id="ai-reels-carousel" data-skeleton-count="4" data-swiper-class="reels-swiper" aria-live="polite"></div>
-      </div>
-    </section>
-
-    <section class="section-padding app-cta reveal" id="download" aria-labelledby="download-title">
-      <div class="container-max position-relative">
-        <div class="row align-items-center g-5">
-          <div class="col-lg-5">
-            <div class="phone-mockup" aria-hidden="true">
-              <div class="phone-screen">
-                <div class="phone-poster"><i class="ri-play-circle-fill" aria-hidden="true"></i></div>
-                <div class="phone-ui">
-                  <div class="phone-line"></div>
-                  <div class="phone-line short"></div>
-                  <div class="phone-line"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-7">
-            <span class="section-kicker">Mobile Ready</span>
-            <h2 class="section-title" id="download-title">Complete Entertainment In Your Pocket</h2>
-            <p class="section-copy">Watch on the go, save your favorites, switch profiles, and enjoy premium stories in crisp quality.</p>
-            <div class="feature-list">
-              <div class="feature-item"><i class="ri-download-cloud-2-line" aria-hidden="true"></i>Offline Download</div>
-              <div class="feature-item"><i class="ri-4k-line" aria-hidden="true"></i>HD and 4K Streaming</div>
-              <div class="feature-item"><i class="ri-group-line" aria-hidden="true"></i>Multiple Profiles</div>
-              <div class="feature-item"><i class="ri-shield-star-line" aria-hidden="true"></i>Ad-Free Premium</div>
-            </div>
-            <div class="store-buttons">
-              <a class="store-button" href="#" aria-label="Download on the App Store"><i class="ri-apple-fill" aria-hidden="true"></i>App Store</a>
-              <a class="store-button" href="#" aria-label="Get it on Google Play"><i class="ri-google-play-fill" aria-hidden="true"></i>Google Play</a>
-            </div>
-          </div>
+        <div class="mockup-stage" aria-hidden="true">
+          <img class="hero-art" src="assets/placeholders/hero%20img.png" alt="">
         </div>
       </div>
     </section>
 
-    <section class="section-padding reveal" id="experience" aria-labelledby="experience-title">
-      <div class="container-max">
-        <span class="section-kicker">Built For Binge Watching</span>
-        <h2 class="section-title" id="experience-title">Why Watch On Goli Doli</h2>
-        <div class="experience-grid">
-          <article class="experience-card">
-            <i class="ri-film-line" aria-hidden="true"></i>
-            <h3>Indian-first catalogue</h3>
-            <p>Movies, shows, web series, micro dramas, and reels curated for Indian entertainment audiences.</p>
-          </article>
-          <article class="experience-card">
-            <i class="ri-smartphone-line" aria-hidden="true"></i>
-            <h3>Made for mobile</h3>
-            <p>Fast browsing, quick playback, compact rows, and short-form formats that feel natural on phones.</p>
-          </article>
-          <article class="experience-card">
-            <i class="ri-sparkling-2-line" aria-hidden="true"></i>
-            <h3>Fresh discovery</h3>
-            <p>Landing content, banners, categories, and rails update from the backend as new titles go live.</p>
-          </article>
-          <article class="experience-card">
-            <i class="ri-download-cloud-2-line" aria-hidden="true"></i>
-            <h3>Watch anywhere</h3>
-            <p>Download app buttons, offline-ready messaging, and a premium OTT layout designed for repeat viewing.</p>
-          </article>
-        </div>
+    <section class="features">
+      <div class="section-head">
+        <h2>Snackable Stories That Get You Hooked</h2>
+        <p>With Goli Doli, you can enjoy web series, movies, TV shows, micro dramas and AI reels anytime, anywhere. Fresh entertainment that keeps you hooked!</p>
+      </div>
+      <div class="feature-grid">
+        <article class="feature-card">
+          <i class="ri-film-line" aria-hidden="true"></i>
+          <h3>Web Series & Movies</h3>
+          <p>Binge-worthy web series, blockbuster movies — sab kuch ek jagah.</p>
+        </article>
+        <article class="feature-card">
+          <i class="ri-sparkling-2-fill" aria-hidden="true"></i>
+          <h3>New Content Daily</h3>
+          <p>Fresh web series aur movies roz add hote hain taaki aap kabhi bore na ho.</p>
+        </article>
+        <article class="feature-card">
+          <i class="ri-shield-check-line" aria-hidden="true"></i>
+          <h3>Ads Free Watching</h3>
+          <p>Premium pe bina ads ke apna favourite content enjoy karo.</p>
+        </article>
+        <article class="feature-card">
+          <i class="ri-4k-line" aria-hidden="true"></i>
+          <h3>Premium HD Quality</h3>
+          <p>HD aur 4K quality mein crystal clear streaming ka maza lo.</p>
+        </article>
       </div>
     </section>
 
-    <section class="section-padding grain-section reveal" id="faq" aria-labelledby="faq-title">
-      <div class="container-max">
-        <span class="section-kicker">Loved By Viewers</span>
-        <h2 class="section-title" id="faq-title">Testimonials And FAQ</h2>
-        <div class="testimonial-grid">
-          <article class="testimonial-card">
-            <div class="stars" aria-label="5 out of 5 stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
-            <p>"The micro dramas are perfect for quick breaks, and the shows feel fresh and local."</p>
-            <div class="testimonial-author"><span class="avatar-placeholder">A</span><strong>Aarav Sharma</strong></div>
-          </article>
-          <article class="testimonial-card">
-            <div class="stars" aria-label="5 out of 5 stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
-            <p>"A slick Indian OTT experience with the kind of genres my family actually watches."</p>
-            <div class="testimonial-author"><span class="avatar-placeholder">N</span><strong>Nisha Verma</strong></div>
-          </article>
-          <article class="testimonial-card">
-            <div class="stars" aria-label="5 out of 5 stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
-            <p>"The app download and profiles make it easy to continue watching anywhere."</p>
-            <div class="testimonial-author"><span class="avatar-placeholder">R</span><strong>Rohan Mehta</strong></div>
-          </article>
-        </div>
-        <div class="accordion accordion-gd" id="faqAccordion">
-          <div class="accordion-item">
-            <h3 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faqOne" aria-expanded="true" aria-controls="faqOne">How do subscriptions work?</button></h3>
-            <div id="faqOne" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion"><div class="accordion-body">Plan details are shown inside the Goli Doli app before purchase. You can manage your subscription from your account settings.</div></div>
-          </div>
-          <div class="accordion-item">
-            <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqTwo" aria-expanded="false" aria-controls="faqTwo">What content can I watch?</button></h3>
-            <div id="faqTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">Goli Doli features web series, movies, TV shows, micro dramas, and AI reels across Indian entertainment genres.</div></div>
-          </div>
-          <div class="accordion-item">
-            <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqThree" aria-expanded="false" aria-controls="faqThree">Can I download videos?</button></h3>
-            <div id="faqThree" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">Offline downloads are available on supported plans and devices through the Goli Doli mobile app.</div></div>
-          </div>
-          <div class="accordion-item">
-            <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqFour" aria-expanded="false" aria-controls="faqFour">Which devices are supported?</button></h3>
-            <div id="faqFour" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">The app is planned for mobile-first streaming, with responsive landing pages and support details available through contact.</div></div>
-          </div>
-          <div class="accordion-item">
-            <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqFive" aria-expanded="false" aria-controls="faqFive">Can I cancel anytime?</button></h3>
-            <div id="faqFive" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">Yes. Cancelling stops future renewals while access continues until the end of the current billing period.</div></div>
-          </div>
-        </div>
+    <section class="marquee" aria-label="Goli Doli highlights">
+      <div class="marquee-track">
+        <div class="marquee-line">Goli Doli dekh ✦ <span>Entertainment OTT Platform</span> ✦ Web Series ✦ <span>Movies</span> ✦ TV Shows ✦ <span>Micro Drama</span> ✦ AI Reels ✦</div>
+        <div class="marquee-line">Goli Doli dekh ✦ <span>Entertainment OTT Platform</span> ✦ Web Series ✦ <span>Movies</span> ✦ TV Shows ✦ <span>Micro Drama</span> ✦ AI Reels ✦</div>
+        <div class="marquee-line">Goli Doli dekh ✦ <span>Entertainment OTT Platform</span> ✦ Web Series ✦ <span>Movies</span> ✦ TV Shows ✦ <span>Micro Drama</span> ✦ AI Reels ✦</div>
+        <div class="marquee-line">Goli Doli dekh ✦ <span>Entertainment OTT Platform</span> ✦ Web Series ✦ <span>Movies</span> ✦ TV Shows ✦ <span>Micro Drama</span> ✦ AI Reels ✦</div>
       </div>
     </section>
 
+    <section class="feature-scroll">
+      <h2>Bade Bade Fayde, Thodi Si Entertainment</h2>
+      <div class="scroll-row infinite" aria-label="App benefits">
+        <article class="benefit-card">
+          <h3>Personalised Favourites</h3>
+          <div class="benefit-phone with-image"><img src="assets/placeholders/gd2.png" alt="Personalised favourites in Goli Doli app" loading="lazy"></div>
+        </article>
+        <article class="benefit-card">
+          <h3>Apni Pasand Ki Bhasha Mein</h3>
+          <div class="benefit-phone with-image"><img src="assets/placeholders/gd3.png" alt="Micro drama phone preview" loading="lazy"></div>
+        </article>
+        <article class="benefit-card">
+          <h3>100% Ads Free Content</h3>
+          <div class="benefit-phone with-image"><img src="assets/placeholders/gd4.png" alt="Ads free content preview" loading="lazy"></div>
+        </article>
+        <article class="benefit-card">
+          <h3>Unlimited Entertainment</h3>
+          <div class="benefit-phone with-image"><img src="assets/placeholders/gd5.png" alt="Unlimited entertainment preview" loading="lazy"></div>
+        </article>
+        <article class="benefit-card">
+          <h3>5 Cr+ Users Ka Pyaar</h3>
+          <div class="benefit-phone with-image"><img src="assets/placeholders/gd6.png" alt="Loved by viewers preview" loading="lazy"></div>
+        </article>
+        <article class="benefit-card" aria-hidden="true">
+          <h3>Personalised Favourites</h3>
+          <div class="benefit-phone with-image"><img src="assets/placeholders/gd2.png" alt="" loading="lazy"></div>
+        </article>
+        <article class="benefit-card" aria-hidden="true">
+          <h3>Apni Pasand Ki Bhasha Mein</h3>
+          <div class="benefit-phone with-image"><img src="assets/placeholders/gd3.png" alt="" loading="lazy"></div>
+        </article>
+        <article class="benefit-card" aria-hidden="true">
+          <h3>100% Ads Free Content</h3>
+          <div class="benefit-phone with-image"><img src="assets/placeholders/gd4.png" alt="" loading="lazy"></div>
+        </article>
+        <article class="benefit-card" aria-hidden="true">
+          <h3>Unlimited Entertainment</h3>
+          <div class="benefit-phone with-image"><img src="assets/placeholders/gd5.png" alt="" loading="lazy"></div>
+        </article>
+        <article class="benefit-card" aria-hidden="true">
+          <h3>5 Cr+ Users Ka Pyaar</h3>
+          <div class="benefit-phone with-image"><img src="assets/placeholders/gd6.png" alt="" loading="lazy"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="showcase">
+      <div class="container">
+        <h2>Short. Fictional. Dramatic. Aur Bahut Kuch!</h2>
+        <p>Goli Doli — India ka sabse entertaining OTT platform</p>
+        <img class="showcase-img" src="assets/placeholders/gd%20all.png" alt="Goli Doli OTT platform apps preview" loading="lazy">
+      </div>
+    </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="footer-main">
-      <div class="container-max">
-        <div class="row g-4">
-          <div class="col-lg-4 col-md-6">
-            <img class="brand-logo mb-3" src="assets/logo.png" alt="Goli Doli" loading="lazy">
-            <p class="section-copy">Indian stories, binge-worthy shows, quick dramas, and cinematic reels from India.</p>
-          </div>
-          <div class="col-lg-2 col-md-6">
-            <h2 class="footer-title">Quick Links</h2>
-            <ul class="footer-links">
-              <li><a href="index.html">Home</a></li>
-              <li><a href="contact.html">Contact</a></li>
-              <li><a href="profile.html">Profile</a></li>
-              <li><a href="#experience">Experience</a></li>
-            </ul>
-          </div>
-          <div class="col-lg-3 col-md-6">
-            <h2 class="footer-title">Categories</h2>
-            <ul class="footer-links">
-              <li><a href="#latest-webseries">Web Series</a></li>
-              <li><a href="#top-movies">Movies</a></li>
-              <li><a href="#trending-tv">TV Shows</a></li>
-              <li><a href="#latest-micro-drama">Micro Drama</a></li>
-              <li><a href="#ai-reels">AI Reels</a></li>
-            </ul>
-          </div>
-          <div class="col-lg-3 col-md-6">
-            <h2 class="footer-title">Contact</h2>
-            <ul class="footer-links">
-              <li><a href="mailto:support@golidoli.com">support@golidoli.com</a></li>
-              <li><a href="tel:+918279544828">+91-8279544828</a></li>
-            </ul>
-            <div class="social-row mt-3">
-              <a class="icon-button" href="#" aria-label="Instagram"><i class="ri-instagram-line" aria-hidden="true"></i></a>
-              <a class="icon-button" href="#" aria-label="X"><i class="ri-twitter-x-line" aria-hidden="true"></i></a>
-              <a class="icon-button" href="#" aria-label="Facebook"><i class="ri-facebook-fill" aria-hidden="true"></i></a>
-              <a class="icon-button" href="#" aria-label="YouTube"><i class="ri-youtube-fill" aria-hidden="true"></i></a>
-            </div>
-          </div>
+  <footer class="footer">
+    <div class="footer-top">
+      <div>
+        <img class="footer-logo" src="assets/logo.png" alt="Goli Doli">
+        <div class="company">Goli Doli Entertainment Pvt. Ltd.</div>
+        <div class="address">
+          123, Entertainment Plaza,<br>
+          Sector 7, Mumbai,<br>
+          Maharashtra - 400001
+        </div>
+        <div class="store-row footer-store">
+          <a class="store-btn" href="#" aria-label="Get it on Google Play">
+            <i class="ri-google-play-fill" aria-hidden="true"></i>
+            <span><span class="store-small">Get it on</span><span class="store-main">Google Play</span></span>
+          </a>
+          <a class="store-btn" href="#" aria-label="Download on the App Store">
+            <i class="ri-apple-fill" aria-hidden="true"></i>
+            <span><span class="store-small">Download on the</span><span class="store-main">App Store</span></span>
+          </a>
         </div>
       </div>
-    </div>
-    <div class="footer-bottom">
-      <div class="container-max footer-bottom-inner">
-        <span>© 2026 Goli Doli. Operated by Prism Media Networks Private Limited.</span>
-        <div class="footer-policy-links">
-          <a href="privacy-policy.html">Privacy</a>
-          <a href="terms-conditions.html">Terms</a>
-          <a href="refund-policy.html">Refund</a><a href="delete-account.html">Delete Account</a>
-        </div>
+      <nav class="footer-links" aria-label="Footer links">
+        <a class="footer-link" href="terms-conditions.html">Terms & Conditions</a>
+        <a class="footer-link" href="privacy-policy.html">Privacy Policy</a>
+        <a class="footer-link" href="refund-policy.html">Refund Policy</a>
+        <a class="footer-link" href="delete-account.html">Delete Account</a>
+      </nav>
+      <div>
+        <p class="reach-title">Reach us at</p>
+        <a class="footer-contact" href="mailto:support@golidoli.in"><i class="ri-mail-line" aria-hidden="true"></i> support@golidoli.in</a>
+        <a class="footer-contact" href="tel:+919999999999"><i class="ri-phone-line" aria-hidden="true"></i> +91 99999 99999</a>
       </div>
     </div>
+    <div class="footer-bottom">© 2025 Goli Doli Entertainment Pvt. Ltd. All rights reserved.</div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
-  <script src="js/config.js" defer></script>
-  <script src="js/content-loader.js" defer></script>
-  <script src="js/carousel.js" defer></script>
-  <script src="js/main.js" defer></script>
+  <script>
+    const navbar = document.getElementById("navbar");
+    const brand = document.querySelector(".brand");
+    const brandImage = brand.querySelector("img");
+
+    window.addEventListener("scroll", () => {
+      navbar.classList.toggle("scrolled", window.scrollY > 50);
+    });
+
+    brandImage.addEventListener("error", () => {
+      brand.classList.add("logo-error");
+    });
+  </script>
 </body>
 </html>
