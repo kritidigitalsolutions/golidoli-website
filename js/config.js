@@ -7,7 +7,7 @@ const GOLI_DOLI_CONFIG = {
   supportEmail: "support@golidoli.com",
   businessEmail: "business@golidoli.com",
   phone: "+91-8279544828",
-  office: "802/16A, Vasundhara, Ghaziabad, Uttar Pradesh 201012, India",
+  office: "Vasundhara, Ghaziabad, Uttar Pradesh 201012, India",
   hours: "Monday to Saturday, 10 AM to 6 PM IST",
 };
 
