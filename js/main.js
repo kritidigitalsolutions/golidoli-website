@@ -219,7 +219,26 @@ function showToast(toastEl, message) {
   }
 }
 
+function initHeaderAndBrand() {
+  const navbar = document.getElementById("navbar");
+  const brand = document.querySelector(".brand");
+  const brandImage = brand?.querySelector("img");
+
+  if (navbar) {
+    window.addEventListener("scroll", () => {
+      navbar.classList.toggle("scrolled", window.scrollY > 50);
+    });
+  }
+
+  if (brandImage && brand) {
+    brandImage.addEventListener("error", () => {
+      brand.classList.add("logo-error");
+    });
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+  initHeaderAndBrand();
   initParticles();
   initGsapAnimations();
   initCardHoverAnimations();
